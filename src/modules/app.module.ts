@@ -17,7 +17,7 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    PostgresModule
+    PostgresModule,
     PharmaciesModule,
     ProducersModule,
     ProductsModule,

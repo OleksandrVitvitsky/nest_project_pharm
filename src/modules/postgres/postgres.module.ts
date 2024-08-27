@@ -4,7 +4,7 @@ import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { Config, ConfigType, PostgresConfig } from '../../config/config.type';
+import {  ConfigType, PostgresConfig } from '../../config/config.type';
 
 @Module({
   imports: [
