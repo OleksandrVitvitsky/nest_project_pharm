@@ -3,6 +3,8 @@ import {
   Controller,
   Delete,
   Get,
+  HttpCode,
+  HttpStatus,
   Param,
   Patch,
   Post,
@@ -11,9 +13,11 @@ import {
   ApiBadRequestResponse,
   ApiBearerAuth,
   ApiConflictResponse,
-  ApiForbiddenResponse, ApiNoContentResponse,
-  ApiTags, ApiUnauthorizedResponse
-} from "@nestjs/swagger";
+  ApiForbiddenResponse,
+  ApiNoContentResponse,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
 
 import { CreateUserDto } from './dto/req/create-user.dto';
 import { UpdateUserDto } from './dto/req/update-user.dto';
@@ -51,6 +55,7 @@ export class UsersController {
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiConflictResponse({ description: 'Conflict' })
   @ApiNoContentResponse({ description: 'User has been removed' })
+  @HttpCode(HttpStatus.NO_CONTENT)
   @Delete('me')
   public async removeMe(): Promise<void> {
     return await this.usersService.removeMe(1);
