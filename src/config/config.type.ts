@@ -1,5 +1,7 @@
 export type ConfigType = {
   app: AppConfig;
+  postgres: PostgresConfig;
+  redis: RedisConfig;
 };
 export type AppConfig = {
   port: number;
