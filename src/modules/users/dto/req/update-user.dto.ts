@@ -15,4 +15,5 @@ export class UpdateUserDto {
   password?: string;
   age?: number;
   phone?: string;
+  image?:string;
 }

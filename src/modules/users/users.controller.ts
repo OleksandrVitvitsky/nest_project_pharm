@@ -21,7 +21,7 @@ import {
 
 import { CreateUserDto } from './dto/req/create-user.dto';
 import { UpdateUserDto } from './dto/req/update-user.dto';
-import { PublicUserResDto } from './dto/res/public-user.res.dto';
+import { UserResDto } from './dto/res/user.res.dto';
 import { UsersService } from './users.service';
 
 @ApiTags('users')
@@ -30,7 +30,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   @ApiBadRequestResponse({ description: 'Bad Request' })
   @Post()
-  public async create(@Body() dto: CreateUserDto): Promise<PublicUserResDto> {
+  public async create(@Body() dto: CreateUserDto): Promise<UserResDto> {
     return await this.usersService.create(dto);
   }
   @ApiBearerAuth()
@@ -38,7 +38,7 @@ export class UsersController {
   @ApiForbiddenResponse({ description: 'Forbidden' })
   @ApiConflictResponse({ description: 'Conflict' })
   @Get('me')
-  public async findMe(): Promise<PublicUserResDto> {
+  public async findMe(): Promise<UserResDto> {
     return await this.usersService.findMe(1);
   }
   @ApiBearerAuth()
@@ -47,7 +47,7 @@ export class UsersController {
   @ApiConflictResponse({ description: 'Conflict' })
   @ApiBadRequestResponse({ description: 'Bad Request' })
   @Patch('me')
-  public async updateMe(@Body() dto: UpdateUserDto): Promise<PublicUserResDto> {
+  public async updateMe(@Body() dto: UpdateUserDto): Promise<UserResDto> {
     return await this.usersService.updateMe(1, dto);
   }
   @ApiBearerAuth()
@@ -66,7 +66,7 @@ export class UsersController {
   @ApiConflictResponse({ description: 'Conflict' })
   @ApiBadRequestResponse({ description: 'Bad Request' })
   @Get(':id')
-  public async findById(@Param('id') id: string): Promise<PublicUserResDto> {
+  public async findById(@Param('id') id: string): Promise<UserResDto> {
     return await this.usersService.findById(+id);
   }
 }

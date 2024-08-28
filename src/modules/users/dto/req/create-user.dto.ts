@@ -61,8 +61,13 @@ export class CreateUserDto {
   @Transform(StringTransformHelper.trim)
   @IsString()
   //@ValidateIf((obj) => obj.age === 35)
-  @IsOptional()
   public readonly phone: string;
+
+  @Transform(StringTransformHelper.trim)
+  @IsString()
+  @IsOptional()
+  public readonly image?: string;
+
 }
 //  приклад валідування вкладеності
 

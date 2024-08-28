@@ -12,7 +12,8 @@ export class BaseUserResDto {
 
   phone?: string;
 
-  password: string;
+  image?: string;
+
 
   createdAt: Date;
 

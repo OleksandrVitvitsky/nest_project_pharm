@@ -15,6 +15,7 @@ import { ProducersModule } from './nomenclature/producers/producers.module';
 import { ProductsModule } from './nomenclature/products/products.module';
 import { PharmaciesModule } from './pharmacies/pharmacies.module';
 import { PostgresModule } from './postgres/postgres.module';
+import { RepositoryModule } from './repository/repository.module';
 import { RestsModule } from './rests/rests.module';
 import { UsersModule } from './users/users.module';
 
@@ -22,6 +23,7 @@ import { UsersModule } from './users/users.module';
   imports: [
     PostgresModule,
     LoggerModule,
+    RepositoryModule,
     PharmaciesModule,
     ProducersModule,
     ProductsModule,

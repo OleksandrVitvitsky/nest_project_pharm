@@ -1,11 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { CreateUpdateModel } from './models/create-update.model';
+import { RefreshTokenEntity } from './refresh-token.entity';
 
 @Entity('Users')
-export class UserEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: number;
-
-  @Column('text')
+export class UserEntity extends CreateUpdateModel {
+ @Column('text')
   name: string;
 
   @Column('text', { unique: true })
@@ -14,12 +13,18 @@ export class UserEntity {
   @Column('text', { select: false })
   password: string;
 
-  @Column('int',{ nullable: true })
+  @Column('int', { nullable: true })
   age: number;
 
-  @Column('text')
+  @Column('text', {unique: true})
   phone: string;
 
   @Column('boolean', { default: false })
   isVerified: boolean;
+
+  @Column('text', { nullable: true })
+  image: string;
+
+  // @OneToMany(() => RefreshTokenEntity, (entity) => entity.user)
+  // refreshTokens?: RefreshTokenEntity[];
 }
