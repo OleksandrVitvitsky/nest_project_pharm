@@ -23,6 +23,7 @@ export class AuthService {
   ) {}
   public async singIn(dto: SignInReqDto): Promise<any> {}
   public async singUp(dto: SignUpReqDto): Promise<AuthResDto> {
+    await this.userService.isEmailExistOrThrow(dto.email);
     const password = await bcrypt.hash(dto.password, 10);
 
     const user = await this.userRepository.save(

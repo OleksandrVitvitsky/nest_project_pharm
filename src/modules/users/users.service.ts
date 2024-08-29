@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
 import { LoggerService } from '../logger/logger.service';
@@ -28,5 +28,12 @@ export class UsersService {
 
   public async removeMe(id: number): Promise<any> {
     return `This action removes a #${id} user`;
+  }
+
+  public async isEmailExistOrThrow(email: string): Promise<void> {
+    const user = await this.userRepository.findOneBy({ email });
+    if (user) {
+      throw new ConflictException('Email already exists');
+    }
   }
 }
