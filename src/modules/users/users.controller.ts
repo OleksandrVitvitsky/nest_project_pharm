@@ -19,7 +19,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 
-import { CreateUserDto } from './dto/req/create-user.dto';
+
 import { UpdateUserDto } from './dto/req/update-user.dto';
 import { UserResDto } from './dto/res/user.res.dto';
 import { UsersService } from './users.service';
@@ -28,11 +28,7 @@ import { UsersService } from './users.service';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
-  @ApiBadRequestResponse({ description: 'Bad Request' })
-  @Post()
-  public async create(@Body() dto: CreateUserDto): Promise<UserResDto> {
-    return await this.usersService.create(dto);
-  }
+
   @ApiBearerAuth()
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @ApiForbiddenResponse({ description: 'Forbidden' })

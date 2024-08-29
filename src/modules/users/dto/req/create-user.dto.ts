@@ -67,7 +67,6 @@ export class CreateUserDto {
   @IsString()
   @IsOptional()
   public readonly image?: string;
-
 }
 //  приклад валідування вкладеності
 

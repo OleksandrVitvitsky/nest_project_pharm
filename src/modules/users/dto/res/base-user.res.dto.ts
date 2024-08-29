@@ -14,7 +14,6 @@ export class BaseUserResDto {
 
   image?: string;
 
-
   createdAt: Date;
 
   updatedAt: Date;

@@ -1,10 +1,11 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+
 import { CreateUpdateModel } from './models/create-update.model';
 import { RefreshTokenEntity } from './refresh-token.entity';
 
 @Entity('Users')
 export class UserEntity extends CreateUpdateModel {
- @Column('text')
+  @Column('text')
   name: string;
 
   @Column('text', { unique: true })
@@ -16,7 +17,7 @@ export class UserEntity extends CreateUpdateModel {
   @Column('int', { nullable: true })
   age: number;
 
-  @Column('text', {unique: true})
+  @Column('text', { unique: true })
   phone: string;
 
   @Column('boolean', { default: false })
@@ -25,6 +26,6 @@ export class UserEntity extends CreateUpdateModel {
   @Column('text', { nullable: true })
   image: string;
 
-  // @OneToMany(() => RefreshTokenEntity, (entity) => entity.user)
-  // refreshTokens?: RefreshTokenEntity[];
+  @OneToMany(() => RefreshTokenEntity, (entity) => entity.user)
+  refreshTokens?: RefreshTokenEntity[];
 }

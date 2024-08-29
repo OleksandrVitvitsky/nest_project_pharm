@@ -5,7 +5,7 @@ import { LoggerService } from '../logger/logger.service';
 import { UserRepository } from '../repository/services/user.repository';
 import { CreateUserDto } from './dto/req/create-user.dto';
 import { UpdateUserDto } from './dto/req/update-user.dto';
-import {  UserResDto } from './dto/res/user.res.dto';
+import { UserResDto } from './dto/res/user.res.dto';
 
 @Injectable()
 export class UsersService {
@@ -13,12 +13,7 @@ export class UsersService {
     private readonly logger: LoggerService,
     private readonly userRepository: UserRepository,
   ) {}
-  public async create(dto: CreateUserDto): Promise<UserResDto> {
-    const password = await bcrypt.hash(dto.password, 10);
-    return await this.userRepository.save(
-      this.userRepository.create({ ...dto, password }),
-    );
-  }
+
 
   public async findById(id: number): Promise<any> {
     return `This action returns a #${id} user`;

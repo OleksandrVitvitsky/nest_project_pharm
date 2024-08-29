@@ -7,5 +7,6 @@ export class UserResDto extends PickType(BaseUserResDto, [
   'name',
   'email',
   'age',
+  'phone',
   'image',
 ]) {}
